@@ -1,0 +1,6 @@
+venv
+.vscode
+.cache
+.env
+origin_image
+face_image
