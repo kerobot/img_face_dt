@@ -56,14 +56,6 @@ def detect_image_face(file_path, image, cascade_filepath):
         cv2.imwrite(output_path, face_image)
         face_count = face_count + 1
 
-    # in_dir = "./face_image/*"
-    # in_jpg = glob.glob(in_dir)
-    # img_file_name_list = os.listdir("./face_image/")
-    # # img_file_name_listをシャッフル、そのうち2割をtest_imageディテクトリに入れる
-    # random.shuffle(in_jpg)
-    # for i in range(len(in_jpg)//5):
-    #     shutil.move(str(in_jpg[i]), "./test_image")
-
 RETURN_SUCCESS = 0
 RETURN_FAILURE = -1
 # Origin Image Pattern
