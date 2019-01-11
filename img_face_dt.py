@@ -63,7 +63,7 @@ IMAGE_PATH_PATTERN = "./origin_image/*"
 # Output Directory
 OUTPUT_IMAGE_DIR = "./face_image"
 # OpenCV Cascades File
-CASCADE_FILE_PATH = "D:\\Develop\\Bin\\opencv344\\sources\\data\\haarcascades\\haarcascade_frontalface_default.xml"
+CASCADE_FILE_PATH = "C:\\Develop\\Bin\\opencv344\\sources\\data\\haarcascades\\haarcascade_frontalface_default.xml"
 
 def main():
     print("===================================================================")
@@ -88,4 +88,4 @@ def main():
     return RETURN_SUCCESS
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
