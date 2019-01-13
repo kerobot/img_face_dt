@@ -9,7 +9,7 @@ OpenCVと既存の分類器を利用して画像ファイルから顔を抽出�
 ## 環境
 
 * Windows 10 x64 1809
-* Python 3.7.1 x64
+* Python 3.6.5 x64
 * Power Shell 6 x64
 * Visual Studio Code x64
 * Git for Windows x64
