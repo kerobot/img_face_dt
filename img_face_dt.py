@@ -1,5 +1,6 @@
 import sys
 import os
+import settings
 import pathlib
 import shutil
 import cv2
@@ -62,8 +63,6 @@ RETURN_FAILURE = -1
 IMAGE_PATH_PATTERN = "./origin_image/*"
 # Output Directory
 OUTPUT_IMAGE_DIR = "./face_image"
-# OpenCV Cascades File
-CASCADE_FILE_PATH = "C:\\Develop\\Bin\\opencv344\\sources\\data\\haarcascades\\haarcascade_frontalface_default.xml"
 
 def main():
     print("===================================================================")
@@ -82,7 +81,7 @@ def main():
     for name_image in name_images:
         file_path = os.path.join(OUTPUT_IMAGE_DIR, f"{name_image[0]}")
         image = name_image[1]
-        cascade_filepath = CASCADE_FILE_PATH
+        cascade_filepath = settings.CASCADE_FILE_PATH
         detect_image_face(file_path, image, cascade_filepath)
 
     return RETURN_SUCCESS

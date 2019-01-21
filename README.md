@@ -42,6 +42,15 @@ OpenCVと既存の分類器を利用して画像ファイルから顔を抽出�
 > pip install -r requirements.txt
 ```
 
+環境変数を設定します。
+
+> CASCADE_FILE_PATHを設定
+
+```powershell
+> copy .\.env.sample .\.env
+> code .\.env
+```
+
 ## 実行
 
 origin_imageディレクトリに画像ファイルを配置して実行します。
