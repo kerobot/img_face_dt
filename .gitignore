@@ -2,5 +2,6 @@ venv
 .vscode
 .cache
 .env
+__pycache__/
 origin_image
 face_image
