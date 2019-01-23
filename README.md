@@ -13,6 +13,7 @@ OpenCVと既存の分類器を利用して画像ファイルから顔を抽出�
 * Power Shell 6 x64
 * Visual Studio Code x64
 * Git for Windows x64
+* OpenCV 3.4.4
 
 ## 構築
 
