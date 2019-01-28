@@ -1,8 +1,6 @@
 # img_face_dt
 
-Face Detect by OpenCV
-
-OpenCVと既存の分類器を利用して画像ファイルから顔を抽出します。
+OpenCVと既存の分類器（正面顔）を利用して画像ファイルから顔を抽出します。
 
 事前に OpenCV の haarcascade_frontalface_default.xml を用意しておくこと。
 
