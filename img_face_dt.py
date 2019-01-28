@@ -1,12 +1,8 @@
-import sys
 import os
-import settings
 import pathlib
-import shutil
-import cv2
 import glob
-import numpy as np
-from PIL import Image
+import cv2
+import settings
 
 def load_name_images(image_path_pattern):
     name_images = []
@@ -26,7 +22,7 @@ def load_name_images(image_path_pattern):
         if image is None:
             print(f"画像ファイル[{fullpath}]を読み込めません")
             continue
-        name_images.append((filename,image))
+        name_images.append((filename, image))
     return name_images
 
 def detect_image_face(file_path, image, cascade_filepath):
@@ -35,15 +31,14 @@ def detect_image_face(file_path, image, cascade_filepath):
     # カスケードファイルの読み込み
     cascade = cv2.CascadeClassifier(cascade_filepath)
     # 顔認識
-    faces = cascade.detectMultiScale(image_gs, scaleFactor=1.1, minNeighbors=2, minSize=(64, 64))
+    faces = cascade.detectMultiScale(image_gs, scaleFactor=1.1, minNeighbors=15, minSize=(64, 64))
     if len(faces) == 0:
         print(f"顔認識失敗")
         return
     # 1つ以上の顔を認識
     face_count = 1
-    for rect in faces:
-        x, y, width, height = rect
-        face_image = image[y:y+height, x:x+width]
+    for (xpos, ypos, width, height) in faces:
+        face_image = image[ypos:ypos+height, xpos:xpos+width]
         if face_image.shape[0] > 64:
             face_image = cv2.resize(face_image, (64, 64))
         print(face_image.shape)
@@ -56,6 +51,15 @@ def detect_image_face(file_path, image, cascade_filepath):
         print(f"出力ファイル（絶対パス）:{output_path}")
         cv2.imwrite(output_path, face_image)
         face_count = face_count + 1
+
+def delete_dir(dir_path, is_delete_top_dir=True):
+    for root, dirs, files in os.walk(dir_path, topdown=False):
+        for name in files:
+            os.remove(os.path.join(root, name))
+        for name in dirs:
+            os.rmdir(os.path.join(root, name))
+    if is_delete_top_dir:
+        os.rmdir(dir_path)
 
 RETURN_SUCCESS = 0
 RETURN_FAILURE = -1
@@ -71,8 +75,10 @@ def main():
     print("===================================================================")
 
     # ディレクトリの作成
-    if os.path.isdir(OUTPUT_IMAGE_DIR) == False:
+    if not os.path.isdir(OUTPUT_IMAGE_DIR):
         os.mkdir(OUTPUT_IMAGE_DIR)
+    # ディレクトリ内のファイル削除
+    delete_dir(OUTPUT_IMAGE_DIR, False)
 
     # 画像ファイルの読み込み
     name_images = load_name_images(IMAGE_PATH_PATTERN)
