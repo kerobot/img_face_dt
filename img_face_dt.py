@@ -31,7 +31,7 @@ def detect_image_face(file_path, image, cascade_filepath):
     # カスケードファイルの読み込み
     cascade = cv2.CascadeClassifier(cascade_filepath)
     # 顔認識
-    faces = cascade.detectMultiScale(image_gs, scaleFactor=1.1, minNeighbors=15, minSize=(64, 64))
+    faces = cascade.detectMultiScale(image_gs, scaleFactor=1.11, minNeighbors=3, minSize=(64, 64))
     if len(faces) == 0:
         print(f"顔認識失敗")
         return
